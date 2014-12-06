@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link href="style.css" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+
+	<link rel = "stylesheet" type = "text/css" 
+	href="style.css"/>
+
 </head>
 <body>
 	<div class = "wrapper">
 		<div class = "container">
+
 			<div class = "poll">
-				<div class = "option">
-					<input type = "checkbox" />
+				<div class = "template">
+					<input type = "checkbox" class = "checkbox" />
 					<div class = "text"> {text1} </div>
 				</div>
-				<div class = "option">
-					<input type = "checkbox" />
-					<div class = "text"> {text2} </div>
-				</div>
-				<div class = "option">
-					<input type = "checkbox" />
-					<div class = "text"> {text3} </div>
-				</div>
+				<div class = "clear"></div>
 			</div>
-			<div class = "submission">
+
+			<div class = "submitResponse">
 				<div class = "viewResults"> {view results} </div>
-				<div class = "submitButton">
+				<div class = "responseButton">
 					<input type = "submit" value = "Submit" />
 				</div>
-				
+				<div class = "clear"></div>
 			</div>
+
 		</div>
 	</div>
 
