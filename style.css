@@ -8,11 +8,13 @@
 	margin: 20px auto;
 }
 
-.poll, .submitResponse {
+.poll, .newOption, .submitResponse {
 	width: 600px;
 }
 
-.checkbox, .text, .viewResults, .responseButton {
+.checkbox, .text, 
+.createQuestion, .submitQuestion,
+.viewResults, .responseButton {
 	float: left;
 }
 
