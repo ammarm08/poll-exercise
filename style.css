@@ -8,7 +8,7 @@
 	margin: 20px auto;
 }
 
-.poll, .newOption, .submitResponse {
+.poll, .createOption, .submitResponse {
 	width: 600px;
 }
 
