@@ -13,9 +13,16 @@
 		<div class = "container">
 
 			<div class = "poll">
+				<div class = "pollTitle"> 
+					<h2>Which automakers make the best cars in the world? </h2>
+				</div>
+
 				<div class = "template">
 					<input type = "checkbox" class = "checkbox" />
 					<div class = "text"> {text} </div>
+					<div class = "divDelete">
+						<input type = "button" value = "remove" />
+					</div>
 					<div class = "clear"></div>
 				</div>	
 			</div>
@@ -25,9 +32,11 @@
 			<div class = "createOption">
 				<div class = "divCreateQuestion">
 					<input type = "textbox" class = "createQuestion"
-					placeholder = "type question here ..."/>
+					maxlength = "40" 
+					placeholder = "Add new option here...
+					                              &#8626;"/>
 					<input type = "submit" class = "submitQuestion"
-					value = "+" />
+					value = "add" />
 				</div>
 				<div class = "clear"></div>
 			</div>
@@ -36,10 +45,12 @@
 
 			<div class = "submitResponse">
 				<div class = "viewResults">
-					<a href="results.html"> View Results </a>
+					<a href = "results.html"> view results </a>
 				</div>
 				<div class = "responseButton">
-					<input type = "submit" value = "Submit" />
+					<input type = "submit" value = "Submit"
+					class = "submit"
+					onclick = "window.location = 'results.html';" />
 				</div>
 				<div class = "clear"></div>
 			</div>

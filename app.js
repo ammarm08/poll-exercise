@@ -2,13 +2,18 @@ $(document).ready(function () {
 
 	
 	var submitQuestion = $(".submitQuestion");
+	var responseButton = $(".responseButton");
 	var createText = $(".createQuestion");
 	var template = $(".template");
 
-	var options = [];
+	var choices = [];
 
 
 	submitQuestion.on("submit", function(e) {
+		e.preventDefault();
+	})
+
+	responseButton.on("submit", function(e) {
 		e.preventDefault();
 	})
 
@@ -19,18 +24,33 @@ $(document).ready(function () {
 	})
 
 	submitQuestion.on("click", function () {
-		var value = createText.val().toLowerCase();
-		var length = options.length;
+		var value = createText.val();
+		var length = choices.length;
 
 		createQuestion(length, value, false);
 		createText.val('');
 
-		options.push({
+		choices.push({
 			"text": value,
-			"isChecked": false
+			"isChecked": false,
+			"votes": 0
 		});
 
-		localStorage.setItem("poll-results", JSON.stringify(options));
+		localStorage.setItem("poll-results", JSON.stringify(choices));
+	})
+
+	responseButton.on("click", function () {
+		loadchoices ();
+		for (i = 0; i < choices.length; i++) {
+			if (choices[i].isChecked) {
+				choices[i].votes = choices[i].votes + 1;
+			}
+			choices[i].isChecked = false;
+		}
+		localStorage.setItem("poll-results", JSON.stringify(choices));
+		$(".newOption").remove();
+		loadchoices ();
+		refreshchoices(choices);
 	})
 
 	var createQuestion = function (position, text, isChecked) {
@@ -45,13 +65,13 @@ $(document).ready(function () {
 		question.appendTo(".poll");
 	}
 
-	var loadOptions = function () {
+	var loadchoices = function () {
 		if (localStorage.getItem("poll-results") != null) {
-			options = JSON.parse(localStorage.getItem("poll-results"));	
+			choices = JSON.parse(localStorage.getItem("poll-results"));	
 		}
 	}
 
-	var refreshOptions = function (stored) {
+	var refreshchoices = function (stored) {
 		if (localStorage.getItem("poll-results") != null) {
 			for (i = 0; i < stored.length; i++) {
 				createQuestion (i,
@@ -61,19 +81,31 @@ $(document).ready(function () {
 		}
 	}
 
-	loadOptions ();
-	refreshOptions(options);
+	loadchoices ();
+	refreshchoices(choices);
 
 	$(document).on("change", ".checkbox", function () {
 		var checked = $(this).is(':checked');
 		var checkboxParent = $(this).parent(".newOption");
 		var checkboxIndex = checkboxParent.data("position");
 		
-		options[checkboxIndex].isChecked = checked;
-		localStorage.setItem("poll-results", JSON.stringify(options));
+		choices[checkboxIndex].isChecked = checked;
+		localStorage.setItem("poll-results", JSON.stringify(choices));
 	})
-	
-	// removeQuestion function
-	// resetQuestions function
+
+	$(document).on("click", ".divDelete", function () {
+
+		var choiceParent = $(this).parent(".newOption");
+		var choiceIndex = choiceParent.data("position");
+		choices.splice(choiceIndex, 1);
+
+		localStorage.setItem("poll-results", JSON.stringify(choices));
+
+		$(".newOption").remove();
+
+		loadchoices ();
+		refreshchoices(choices);
+
+	})
 
 })
