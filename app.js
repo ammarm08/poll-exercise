@@ -8,15 +8,6 @@ $(document).ready(function () {
 
 	var choices = [];
 
-
-	submitQuestion.on("submit", function(e) {
-		e.preventDefault();
-	})
-
-	responseButton.on("submit", function(e) {
-		e.preventDefault();
-	})
-
 	createText.on("keypress", function(e) {
 		if (e.which === 13) {
 			submitQuestion.trigger("click");
