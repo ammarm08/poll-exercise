@@ -1,0 +1,63 @@
+
+<html>
+<head>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+
+	<link rel = "stylesheet" type = "text/css" 
+	href="style.css"/>
+
+</head>
+<body>
+	<div class = "wrapper">
+		<div class = "container">
+
+			<div class = "poll">
+				<div class = "pollTitle"> 
+					<h2>Which automakers make the best cars in the world? </h2>
+				</div>
+
+				<div class = "template">
+					<input type = "checkbox" class = "checkbox" />
+					<div class = "text"> {text} </div>
+					<div class = "divDelete">
+						<input type = "button" value = "remove" />
+					</div>
+					<div class = "clear"></div>
+				</div>	
+			</div>
+
+			<div class = "clear"></div>
+
+			<div class = "createOption">
+				<div class = "divCreateQuestion">
+					<input type = "textbox" class = "createQuestion"
+					maxlength = "40" 
+					placeholder = "Add new option here...
+					                              &#8626;"/>
+					<input type = "submit" class = "submitQuestion"
+					value = "add" />
+				</div>
+				<div class = "clear"></div>
+			</div>
+
+			<div class = "clear"></div>
+
+			<div class = "submitResponse">
+				<div class = "viewResults">
+					<a href = "results.html"> view results </a>
+				</div>
+				<div class = "responseButton">
+					<input type = "submit" value = "Submit"
+					class = "submit"
+					onclick = "window.location = 'results.html';" />
+				</div>
+				<div class = "clear"></div>
+			</div>
+
+		</div>
+	</div>
+
+
+</body>
+</html>
